@@ -3,6 +3,7 @@ from flask import Flask, render_template, request, redirect, url_for, session
 import datetime
 import oauthlib
 import pytz
+from flask_oauthlib.client import OAuth
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
@@ -63,16 +64,13 @@ def authorized():
 @google.tokengetter
 def get_google_oauth_token():
     return session.get('google_token')
- 
-    
-# The success route and Indian timestamp function remain the same as in the previous response.
 
 if __name__ == '__main__':
     app.run(debug=True)
 
-    # For demonstration purposes, we'll assume successful authentication.
-    session['email'] = email
-    session['name'] = "John Doe"  # Replace with the user's name obtained from authentication.
+   
+    session['email'] = "email"
+    session['name'] = "name"
 
     
 
